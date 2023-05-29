@@ -1,0 +1,128 @@
+<?php include 'template/components/header.php' ?>
+<link rel="stylesheet" href="../template/styles/group_create.css">
+<link rel="stylesheet" href="../template/styles/page_create.css">
+
+
+<div class="group_container">
+
+    <div class="page_settings">
+        <div class="group_settings_fil_arianne">
+            <p><a href=<?= "http://" . $host . "/page/pageList" ?>>Pages</a></p>
+            <p class="material-icons-round">chevron_right</p>
+            <p>Créer une page</p>
+        </div>
+
+        <h3 style="white-space: nowrap;">
+
+            <?php
+            if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+                header('Location:' . 'http://' . $host . '/home');
+                exit();
+            } else {
+                echo "Créer une page";
+            }
+            ?>
+        </h3>
+
+        <p class="page_settings_p">Les internautes accèdent à votre Page pour en savoir plus sur vous. Veuillez à y inclure toutes les informations dont ils pourraient avoir besoin.</p>
+
+        <form action="<?= "http://" . $host . "/functions/createPage" ?>" class="group_form" method="POST">
+
+            <div class="page_div_input">
+                <input type="text" name="page_name" id="page_name" placeholder="Nom de la page (obligatoire)" class="group_input" maxlength="75" required>
+                <p class="page_settings_p">Utilisez le nom de votre entreprise, marque ou organisation, ou un nom qui décrit votre Page.</p>
+            </div>
+
+            <div class="page_div_input">
+                <input type="text" name="page_category" id="page_category" placeholder="Catégorie (obligatoire)" class="group_input" maxlength="75" required>
+                <p class="page_settings_p">Saisissez la catégorie qui vous décrit le mieux.</p>
+            </div>
+
+            <div class="page_div_input">
+                <input type="textarea" name="" id="" placeholder="Biographie (facultatif)" class="group_input" maxlength="140">
+                <p class="page_settings_p">Dites-en plus sur votre activité.</p>
+            </div>
+
+            <div class="page_div_input">
+                <input type="text" name="profile_icon" id="profile_icon" placeholder="URL de l'image de la page" class="group_input" maxlength="75" required>
+                <p class="page_settings_p">Choisissez une image qui vous décrit le mieux.</p>
+            </div>
+
+            <div class="page_div_input">
+                <input type="text" name="profile_banner" id="profile_banner" placeholder="URL de l'mage de la bannière" class="group_input" maxlength="75" required>
+                <p class="page_settings_p">Choisissez une image qui vous décrit le mieux.</p>
+            </div>
+
+            <input type="submit" value="Créer la page" class="Submitbutton">
+
+        </form>
+
+    </div>
+
+
+    <div class="group_preview">
+        <p class="group_text_preview">
+            Aperçu de la page
+        </p>
+
+        <div class="page_banner">
+            <div class="page_banner_add_banner">
+                <span class="material-icons">add_a_photo</span>
+            </div>
+
+            <div class="page_banner_container_pp">
+                <img src="../template/img/pp.png" alt="page_pp" class="page_banner_pp">
+            </div>
+
+        </div>
+
+        <h1>Nom de la page</h1>
+
+        <div class="page_preview_nav">
+            <div class="page_preview_titre">
+                <h4>À propos</h4>
+                <h4>Publications</h4>
+                <h4>Followers</h4>
+                <h4>Photos</h4>
+            </div>
+
+            <div class="page_preview_icons">
+                <div class="group_preview_publication_sub group_preview_button">
+                    <span class="material-icons">library_add</span>
+                    <p>Suivre</p>
+                </div>
+
+                <div class="group_preview_publication_sub group_preview_button">
+                    <span class="material-icons">chat</span>
+                    <p>Message</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="group_preview_main">
+
+            <div class="group_preview_aboutus">
+                <h4>À propos</h4>
+                <div class="group_preview_publication_sub">
+                    <span class="material-icons">library_add_check</span>
+                    <p>0 Followers</p>
+                </div>
+                <div class="group_preview_publication_sub">
+                    <span class="material-icons">info</span>
+                    <p>Page - Catégorie</p>
+                </div>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam rerum officia illum vel praesentium rem ipsam, cumque fugiat! Ut minus, dolore a perspiciatis molestias similique illum provident aut officiis sapiente!</p>
+            </div>
+
+            <div class="group_preview_publication_main">
+                <div class="group_preview_publication">
+                    <h4>Publications</h4>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<?php include 'template/components/footer.php' ?>
